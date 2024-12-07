@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- 
+The code above is setting the lang attributes based on the application's current locate.
+-->
+
     <head>
         <meta charset="utf-8">
         <title>Blog</title>
@@ -9,12 +13,12 @@
     <body>
         <h1>Blog Name</h1>
         <div class='posts'>
-            <div class='post'>
-                <h2 class='title'>Title</h2>
-                <p class='body'>This is a sample body.</p>
-            </div>
+            @foreach ($posts as $post)
+                <div class='post'>
+                    <h2 class='title'>{{ $post->title }}</h2>
+                    <p class='body'>{{ $post->body }}</p>
+                </div>
+            @endforeach
         </div>
     </body>
 </html>
-
-
