@@ -14,4 +14,9 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
         // get() performs SELECT * FROM table. 
     }
+
+    public function show(Post $post)
+    {
+        return view('posts.show')->with(['post' => $post]);
+    }
 }
