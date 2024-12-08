@@ -34,6 +34,8 @@ class Post extends Model
         // It divides the query results into pages.
         // fetch maximum of count records per page.
     }
+
+    //この上の2つのmethod、postじゃなくて、posts用
 }
 
 

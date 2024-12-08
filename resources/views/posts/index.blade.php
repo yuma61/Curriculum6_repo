@@ -15,7 +15,13 @@ The code above is setting the lang attributes based on the application's current
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
-                    <h2 class='title'>{{ $post->title }}</h2>
+                    <h2 class='title'>
+                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        <!-- a tag creates a link for navigation.
+                        post part injects the id of the specific post into the URL. 
+                        When the title is clicked, it will go to the page of that id's post.
+                        -->
+                    </h2>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
             @endforeach
