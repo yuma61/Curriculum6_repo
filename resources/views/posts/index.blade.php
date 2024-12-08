@@ -20,5 +20,16 @@ The code above is setting the lang attributes based on the application's current
                 </div>
             @endforeach
         </div>
+        <div class='paginate'>
+            {{ $posts->links() }}
+            <!-- 
+            links() is a method provided by Laravel's LengthAwarePaginator class.
+            It generates HTML pagination links for navigating through paginated data.
+
+            2 primary purpose
+            1. Connecting paginated data to the HTML view
+            2. Linking between pages of paginated data
+            -->
+        </div>
     </body>
 </html>
