@@ -44,5 +44,10 @@ class PostController extends Controller
         // 処理が終わったら、今回保存したpostのIDを含んだURLにリダイレクトされる。
     }
 
+    public function edit(Post $post) 
+    {
+        return view('posts.edit')->with(['post' => $post]);
+    }
+
 
 }
