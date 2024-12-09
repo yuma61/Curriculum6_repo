@@ -29,4 +29,6 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
+Route::put('/posts/{post}', [PostController::class, 'update']);
+
 
