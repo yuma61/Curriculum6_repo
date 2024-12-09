@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
     use HasFactory;
     // Laravel Model Factories
     // It is a feature that simplifies the creation of fake or test data for the model. 
