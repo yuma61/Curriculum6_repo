@@ -25,5 +25,10 @@ Route::get('/posts/create', [PostController::class, 'create']);
 // /posts/createは、/posts/{post}よりも上に書く
 // web.phpは上からルーティングを見ていき、当てはまるルーティングのものが呼び出される。
 
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+
 Route::get('/posts/{post}', [PostController::class, 'show']);
+
+Route::put('/posts/{post}', [PostController::class, 'update']);
+
 
