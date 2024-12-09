@@ -24,4 +24,21 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
+
+    public function store(Request $request, Post $post)
+    {
+        // Request $request 
+        // ユーザーからのリクエストに含まれるデータを扱う場合、Requestインスタンスを利用する。
+        // Post $post
+        // 今回はユーザーの入力データをDBのpostsテーブルにアクセスし保存する必要があるため、空のPostインスタンスを利用。
+        $input = $request['post'];
+        // postをキーに持つリクエストパラメータを取得できる
+        // ここのpostは、リクエストデータのキーとして機能。
+        // HTMLのフォームタグ内のname属性と一致させる。
+        $post->fill($input)->save();
+        // fill()は、$inputを$postインスタンスにセット。
+        // fill()を使うには、PostModel側で、fillableというプロパティにfillが可能なプロパティを指定しておく必要がある。
+        return redirect('/posts/' . $post->id);
+        // 処理が終わったら、今回保存したpostのIDを含んだURLにリダイレクトされる。
+    }
 }

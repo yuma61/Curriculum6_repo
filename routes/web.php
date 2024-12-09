@@ -16,7 +16,10 @@ use App\Http\Controllers\PostController;
 */
 
 
-Route::get('/', [PostController::class, 'index']);   
+Route::get('/', [PostController::class, 'index']);  
+
+Route::post('/posts', [PostController::class, 'store']);
+// /postのPOSTアクセスを受け付けられるように、post()で
 
 Route::get('/posts/create', [PostController::class, 'create']);
 // /posts/createは、/posts/{post}よりも上に書く

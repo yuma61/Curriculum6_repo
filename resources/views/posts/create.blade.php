@@ -10,6 +10,7 @@
         <!-- 
         form is used to collect user input.
         The user often sent to as server for processing.
+
         action属性にはリクエストを送信するURIを定義する。
         今回はRESTの思想に則り、リソースであるpostsをURIに含める。
         
@@ -44,7 +45,7 @@
                 <h2>Body</h2>
                 <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
             </div>
-            <input type="submit" value="保存"/>
+            <input type="submit" value="store"/>
             <!-- 
             type="submit" indicates that this input element is a submit button. 
             When it is clicked, it triggers the submission of the form it belongs to. 
