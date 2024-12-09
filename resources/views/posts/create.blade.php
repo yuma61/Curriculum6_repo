@@ -33,6 +33,7 @@
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name="post[title]" placeholder="タイトル"/>
+                <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                 <!-- 
                 The name attribute indicates the key under which this data will be sent, following the Laravel's convention for nested data.
                 post[tile] is a way to organize and structure the form data
@@ -44,6 +45,7 @@
             <div class="body">
                 <h2>Body</h2>
                 <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
+                <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
             <input type="submit" value="store"/>
             <!-- 

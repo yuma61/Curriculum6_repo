@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 
+use App\Http\Requests\PostRequest;
+
 class PostController extends Controller
 {
     //
@@ -25,7 +27,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {
         // Request $request 
         // ユーザーからのリクエストに含まれるデータを扱う場合、Requestインスタンスを利用する。
@@ -41,4 +43,6 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
         // 処理が終わったら、今回保存したpostのIDを含んだURLにリダイレクトされる。
     }
+
+
 }
