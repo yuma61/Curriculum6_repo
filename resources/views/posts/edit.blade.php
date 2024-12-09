@@ -21,6 +21,10 @@
                 <div class='content__title'>
                     <h2>タイトル</h2>
                     <input type='text' name='post[title]' value="{{ $post->title }}">
+                <!-- 
+                name specifies the key for submitting the data.
+                When the form is submitted, the value of the input field will be sent as part of the request payload.    
+                -->
                 </div>
                 <div class='content__body'>
                     <h2>本文</h2>
