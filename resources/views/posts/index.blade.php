@@ -37,5 +37,6 @@ The code above is setting the lang attributes based on the application's current
             2. Linking between pages of paginated data
             -->
         </div>
+        <a href='/posts/create'>作成</a>
     </body>
 </html>
