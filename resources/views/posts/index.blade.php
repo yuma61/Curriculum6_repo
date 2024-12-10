@@ -23,6 +23,11 @@ The code above is setting the lang attributes based on the application's current
                         -->
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                        @csrf 
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $post->id }})">delete blog {{ $post->id }}</button>
+                    </form>
                 </div>
             @endforeach
         </div>
@@ -38,5 +43,21 @@ The code above is setting the lang attributes based on the application's current
             -->
         </div>
         <a href='/posts/create'>作成</a>
+
+        <script>
+            function deletePost(id) {
+                'use strict'
+                // This function is for confirming deletion of the blog.
+
+                if (confirm("削除すると復元できません。\n本当に削除しますか?")) {
+                    document.getElementById(`form_${id}`).submit();
+                    // The reason of form_ is to intead of just id is 
+                    // to make the id unique.
+                    // For example, if there was another data from another table, 
+                    // and it also uses id for the instances to be unique.
+                    // Without the prefix form_ the program would not know which which table's id is it.
+                }
+            }
+        </script>
     </body>
 </html>
