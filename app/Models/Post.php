@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
@@ -13,6 +14,7 @@ class Post extends Model
     ];
 
     use HasFactory;
+    use SoftDeletes;
     // Laravel Model Factories
     // It is a feature that simplifies the creation of fake or test data for the model. 
     // Factories are primarily used in testing or seedin the database with dummy data.
