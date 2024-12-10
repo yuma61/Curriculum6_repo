@@ -28,7 +28,11 @@ Route::get('/posts/create', [PostController::class, 'create']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 
 Route::get('/posts/{post}', [PostController::class, 'show']);
+// This {post} have to match the variable name created in show function.
+// The variable was created like "Post $post" in the show funciton, so it has to be {post}
 
 Route::put('/posts/{post}', [PostController::class, 'update']);
+
+Route::delete('/posts/{post}', [PostController::class, 'delete']);
 
 
