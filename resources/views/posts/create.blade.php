@@ -42,6 +42,16 @@
                 When the form is submitted, only inputs with a name attribute will appear in the request payload.
                 -->
             </div>
+            <div class="category">
+                <h2>Category</h2>
+                <select name='post[category_id]'>
+                <!-- nameはPHP側でデータを受け取りたい入力項目について必須となる。-->
+                    @foreach($categories as $category)
+                    <!-- This $categories comes from Post.php create function. -->
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select> 
+            </div>
             <div class="body">
                 <h2>Body</h2>
                 <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>

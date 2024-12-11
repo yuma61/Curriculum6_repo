@@ -11,6 +11,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'category_id'
     ];
 
     use HasFactory;
@@ -31,7 +32,13 @@ class Post extends Model
     }
 
     public function getPaginateByLimit(int $limit_count = 3) {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+
+        // :: is used because it interacts with the class itself rather than an instance of the class
+        
+        // with('category')
+        // loads the category relationship for the Post model
+        // Ensures that for each post retrieved, the associated category data is fetched from the categories table in a single query improving performance
 
         // $this (same as python)
         // It  refers to the instance of the Eloquent model class where function is defined.
@@ -43,6 +50,12 @@ class Post extends Model
     }
 
     //この上の2つのmethod、postじゃなくて、posts用
+
+
+    public function category() 
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
 
 

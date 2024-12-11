@@ -22,6 +22,7 @@ The code above is setting the lang attributes based on the application's current
                         When the title is clicked, it will go to the page of that id's post.
                         -->
                     </h2>
+                    <a href="">{{ $post->category->name }}</a>
                     <p class='body'>{{ $post->body }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                         @csrf 
