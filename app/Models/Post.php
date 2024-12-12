@@ -33,9 +33,13 @@ class Post extends Model
 
     public function getPaginateByLimit(int $limit_count = 3) {
         return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        // return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+
+        // ここの：：Withの必要性
+
 
         // :: is used because it interacts with the class itself rather than an instance of the class
-        
+
         // with('category')
         // loads the category relationship for the Post model
         // Ensures that for each post retrieved, the associated category data is fetched from the categories table in a single query improving performance

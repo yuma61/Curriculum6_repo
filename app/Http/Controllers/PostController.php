@@ -13,7 +13,43 @@ class PostController extends Controller
     //
     public function index(Post $post)
     {
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
+        // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client(
+            ['verify' => config('app.env') !== 'local'],
+        );
+        // 'verify' option in the Guzzle HTTP client configuration 
+        // determines whether SSL certificate verification should be 
+        // performned when making HTTPS requests
+
+        // ['verify' => config('app.env') !== 'local'],
+        // When the application us running in a local development environment,
+        // SSL verification is diabled.
+        // This is useful because local development servers often use self-signed certificates
+        // or do not have SSL configured, which can cause errors during API requests
+
+
+        // GET通信URL
+        $url = 'https://teratail.com/api/v1/questions';
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['Bearer' => config('services.teratail.token')]
+        );
+        
+        // This sends a HTTP GET request to the URL stored in $url
+        // Bearer is intended to set the authorization header with a Bearer token
+
+        // API通信で取得したデータはJson形式なので、PHPファイルに対応した連想配列にデコード
+        $questions = json_decode($response->getBody(), true);
+
+
+        return view('posts.index')->with([
+            'posts' => $post->getPaginateByLimit(),
+            'questions' => $questions['questions'],
+        ]);
         // get() performs SELECT * FROM table. 
     }
 

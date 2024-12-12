@@ -44,7 +44,7 @@ The code above is setting the lang attributes based on the application's current
             -->
         </div>
         <a href='/posts/create'>作成</a>
-        {{ Auth::user()->name }}
+        <a href="/">戻る</a>
 
         <br>
         <p>Some questions asked in Teratail.</p>
